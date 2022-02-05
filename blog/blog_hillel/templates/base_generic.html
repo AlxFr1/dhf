@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %} {% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+{% block sidebar %}
+    <div class='container-fluid' style="display: flex; flex-direction: row; justify-content: flex-end">
+           {% if request.user.is_authenticated %}
+				<li> {{user.username}} | <a style="color: rgb(38,188,245)" href="{% url 'logout' %}">Log out</a></li>
+		   {% else %}
+				<li><a style="color: rgb(38,188,245)" href="{% url 'register' %}">Sign up</a> | <a style="color: rgb(38,188,245)" href="{% url 'login' %}">log in</a>
+           {% endif %}
+    </div>
+        {% if request.user.is_authenticated %}
+             <li><a style="color: rgb(38,188,245)" href="{% url 'create' %}">Create post</a></li>
+             <li><a style="color: rgb(38,188,245)" href="{% url 'post-list' %}">Post list</a></li>
+             <li><a style="color: rgb(38,188,245)" href="{% url 'profile-list' %}">Profile-list</a></li>
+             <li><a style="color: rgb(38,188,245)" href="{% url 'message-admin' %}">Contact Us</a></li>
+        {% else %}
+             <li><a style="color: rgb(38,188,245)" href="{% url 'home' %}">Home</a></li>
+             <li><a style="color: rgb(38,188,245)" href="{% url 'post-list' %}">Post list</a></li>
+         {% endif %}
+{% endblock %}
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

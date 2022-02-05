@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="container">
+        <h1>Title: {{ post.title }}</h1>
+    </div>
+        <p>Author: {{ post.author }}
+        <p><strong>Post Date </strong> {{ post.get_date }}</p>
+        <p>{{ post.descript }}</p>
+     {% if post.image %}
+       <img style="width: 200px; height: 250px;" src="{{ post.image.url }}" alt="#">
+     {% endif %}
+
+{% endblock %}

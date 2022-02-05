@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<div style="display: flex; flex-direction: row; align-items: center">
+        <h1>All Profiles</h1>
+    </div>
+
+    {% if user_list %}
+    <ul>
+      {% for profile in user_list %}
+      <li>
+          <p><a href="{% url 'user-detail' profile.pk %}">{{ profile.username }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no profiles.</p>
+    {% endif %}
+{% endblock %}

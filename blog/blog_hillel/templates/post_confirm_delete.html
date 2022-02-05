@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<p>Are you sure you want to delete the Post: {{ post }}?</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-info">Yes, delete</button>
+  </form>
+</form>
+{% endblock %}
